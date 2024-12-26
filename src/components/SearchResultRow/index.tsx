@@ -9,13 +9,13 @@ export default function Index({
 }: {
   title: string;
   description: string;
-  descriptionHighlight: Highlight[];
+  descriptionHighlight?: Highlight[];
   link: string;
 }) {
   const highlightDescription = useMemo(() => {
     const highlightedText: (string | JSX.Element)[] = [];
     let lastIndex = 0;
-
+    if (!descriptionHighlight) return description;
     descriptionHighlight.forEach(({ BeginOffset, EndOffset }, index) => {
       if (lastIndex < BeginOffset) {
         highlightedText.push(description.slice(lastIndex, BeginOffset));
@@ -36,12 +36,27 @@ export default function Index({
   }, [description, descriptionHighlight]);
 
   return (
-    <a href={link} target="_blank" rel="noopener noreferrer" data-cy="search result">
-      <h3 className="text-[#1C76D5] text-[22px] leading-7 font-semibold mb-3" data-cy="search result title">
+    <a
+      href={link}
+      target="_blank"
+      rel="noopener noreferrer"
+      data-cy="search result"
+    >
+      <h3
+        className="text-[#1C76D5] text-[22px] leading-7 font-semibold mb-3"
+        data-cy="search result title"
+      >
         {title}
       </h3>
-      <p className="mb-3" data-cy="search result description">{highlightDescription}</p>
-      <p className="text-xs text-[#686868] break-all" data-cy="search result link">{link}</p>
+      <p className="mb-3" data-cy="search result description">
+        {highlightDescription}
+      </p>
+      <p
+        className="text-xs text-[#686868] break-all"
+        data-cy="search result link"
+      >
+        {link}
+      </p>
     </a>
   );
 }
