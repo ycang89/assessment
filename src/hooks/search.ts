@@ -10,9 +10,9 @@ const fetcher = async (url: string) => {
   return response.json();
 };
 
-export function useSearch(query: string) {
+export function useSearch(query: string | undefined) {
   const { data, error, isLoading } = useSWR<ListResponse<ResultItem>>(
-    query ? `/api/queryResult?query=${query}` : null,
+    query !== undefined ? `/api/queryResult?query=${query}` : null,
     fetcher
   );
 

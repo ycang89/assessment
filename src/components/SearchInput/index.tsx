@@ -132,6 +132,7 @@ export default function Index({
           className={`w-full border border-[#a4a4a4] text-lg py-3.5 px-5 leading-[26px] ${
             isShowSuggestions ? "rounded-tl-md rounded-tr-md" : "rounded-md "
           }`}
+          data-cy="search bar"
         />
         <div className="absolute top-0 flex items-center right-0">
           {inputValue?.length > 0 && (
@@ -143,12 +144,14 @@ export default function Index({
                 alt="close"
                 className="cursor-pointer"
                 onClick={onClearSearch}
+                data-cy="search bar X button"
               />
             </div>
           )}
           <button
             onClick={() => onSubmitSearch(keyword)}
             className="bg-[#1c76d5] text-white px-4 sm:px-8 py-3.5 rounded-md flex items-center text-lg font-[600] hover:bg-[#166BB4]"
+            data-cy="search button"
           >
             <Image
               src="/icons/search.svg"
@@ -162,7 +165,10 @@ export default function Index({
       </div>
 
       {isShowSuggestions && limitedSuggestions?.length > 0 && (
-        <ul className="rounded-bl-md rounded-br-md shadow-[0_4px_6px_rgba(224,228,229,0.35)] absolute w-[calc(100%-145px)] bg-white">
+        <ul
+          className="rounded-bl-md rounded-br-md shadow-[0_4px_6px_rgba(224,228,229,0.35)] absolute w-[calc(100%-145px)] bg-white"
+          data-cy="suggestion dropdown"
+        >
           {limitedSuggestions.map((suggestion, index) => (
             <li
               key={index}
@@ -170,6 +176,7 @@ export default function Index({
                 selectedIndex === index ? "bg-blue-100" : ""
               }`}
               onClick={() => onSubmitSearch(suggestion)}
+              data-cy="suggestion result"
             >
               {highlightText(suggestion, inputValue)}
             </li>

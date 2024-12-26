@@ -6,7 +6,7 @@ import { useState } from "react";
 import Head from "next/head";
 
 export default function Home() {
-  const [keyword, setKeyword] = useState("");
+  const [keyword, setKeyword] = useState<undefined | string>(undefined);
   const { results, isLoading, error } = useSearch(keyword);
   return (
     <div>
@@ -30,7 +30,10 @@ export default function Home() {
             <div>Searching...</div>
           ) : results && results?.TotalNumberOfResults > 0 ? (
             <>
-              <p className="text-[28px] font-semibold mb-10">
+              <p
+                className="text-[28px] font-semibold mb-10"
+                data-cy="search results"
+              >
                 Showing {results?.Page}-{results?.PageSize} of{" "}
                 {results?.TotalNumberOfResults} results
               </p>

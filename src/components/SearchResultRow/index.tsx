@@ -36,12 +36,12 @@ export default function Index({
   }, [description, descriptionHighlight]);
 
   return (
-    <a href={link} target="_blank" rel="noopener noreferrer">
-      <h3 className="text-[#1C76D5] text-[22px] leading-7 font-semibold mb-3">
+    <a href={link} target="_blank" rel="noopener noreferrer" data-cy="search result">
+      <h3 className="text-[#1C76D5] text-[22px] leading-7 font-semibold mb-3" data-cy="search result title">
         {title}
       </h3>
-      <p className="mb-3">{highlightDescription}</p>
-      <p className="text-xs text-[#686868] break-all">{link}</p>
+      <p className="mb-3" data-cy="search result description">{highlightDescription}</p>
+      <p className="text-xs text-[#686868] break-all" data-cy="search result link">{link}</p>
     </a>
   );
 }
