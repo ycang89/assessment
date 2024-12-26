@@ -1,3 +1,4 @@
+import "../../src/styles/globals.css";
 // ***********************************************************
 // This example support/component.ts is processed and
 // loaded automatically before your test files.
@@ -12,10 +13,16 @@
 // You can read more here:
 // https://on.cypress.io/configuration
 // ***********************************************************
-
 // Import commands.js using ES2015 syntax:
 import "./commands";
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
 // Example use:
 // cy.mount(<MyComponent />)
+beforeEach(() => {
+  if (!document.querySelector("#__next_css__DO_NOT_USE__")) {
+    const styleAnchor = document.createElement("div");
+    styleAnchor.id = "__next_css__DO_NOT_USE__";
+    document.head.appendChild(styleAnchor);
+  }
+});
