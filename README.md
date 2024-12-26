@@ -4,7 +4,12 @@
 2. It is assumed that the BeginOffset values in the Highlight object are always sorted in ascending order.
 3. Pagination was not shown in the mock, so it is assumed not to be part of the requirement for this assessment.
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+## Tech Stack
+
+- **Next.js**: A powerful React framework for building web applications with server-side rendering, static site generation, and API routes.
+- **Cypress**: A fast, reliable testing framework for end-to-end and component testing.
+- **Tailwind CSS**: A utility-first CSS framework for rapidly building custom user interfaces with a responsive design.
+- **SWR**: A React hook library for data fetching that handles caching, revalidation, focus tracking, and more.
 
 ## Dependencies
 
@@ -35,17 +40,17 @@ Ensure that your application is running at http://localhost:3000 before executin
 yarn test
 ```
 
-### Run component testing in headless mode
+### Run component tests in headless mode
 ```bash
 yarn cy:run:ct
 ```
 
-### Run e2e testing in headless mode
+### Run e2e tests in headless mode
 ```bash
 yarn cy:run:e2e
 ```
 
-### Run cypress test visually
+### Run cypress tests visually
 ```bash
 yarn cy:open
 ```
