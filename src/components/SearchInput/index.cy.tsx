@@ -2,11 +2,30 @@ import React from "react";
 import Index from "./index";
 
 describe("<Index />", () => {
-  it("renders correctly", () => {
-    // Mount the component
-    cy.mount(<Index onSearch={() => {}} />);
+  beforeEach(() => {
+    // Intercept the API call and return mock data from the fixture
+    cy.intercept("GET", "/api/suggestion*", { fixture: "suggestion.json" }).as(
+      "getSuggestion"
+    );
+  });
 
-    // Assert that the text content is present
-    cy.contains("Search").should("be.visible");
+  it("renders correctly", () => {
+    cy.mount(<Index onSearch={() => {}} />);
+    cy.get(`[data-cy="search bar"]`).should("exist");
+    cy.get(`[data-cy="search button"]`).should("exist");
+  });
+
+  it("suggestion rendered correctly", () => {
+    cy.mount(<Index onSearch={() => {}} />);
+    cy.get(`[data-cy="search bar"]`).type("chi");
+    cy.wait("@getSuggestion");
+    cy.get(`[data-cy="suggestion result"]`).should("have.length", 6);
+  });
+
+  it("close button working correctly", () => {
+    cy.mount(<Index onSearch={() => {}} />);
+    cy.get(`[data-cy="search bar"]`).type("chi");
+    cy.get(`[data-cy="search bar X button"]`).should("exist").click();
+    cy.get(`[data-cy="search bar"]`).should("have.value", "")
   });
 });

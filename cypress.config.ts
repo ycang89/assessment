@@ -61,7 +61,6 @@ export default defineConfig({
       framework: "next",
       bundler: "webpack",
     },
-    setupNodeEvents,
   },
   retries: {
     openMode: 1,
