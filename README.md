@@ -30,17 +30,25 @@ You can start editing the page by modifying `pages/index.tsx`. The page auto-upd
 ## Testing
 Ensure that your application is running at http://localhost:3000 before executing the tests.
 
-# Run both e2e tests and component tests in headless mode
+### Run both e2e tests and component tests in headless mode
+```bash
 yarn test
+```
 
-# Run component testing in headless mode
+### Run component testing in headless mode
+```bash
 yarn cy:run:ct
+```
 
-# Run e2e testing in headless mode
+### Run e2e testing in headless mode
+```bash
 yarn cy:run:e2e
+```
 
-# Run cypress test visually
+### Run cypress test visually
+```bash
 yarn cy:open
+```
 
 ## Learn More
 To learn more about Next.js, take a look at the following resources:
