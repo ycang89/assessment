@@ -12,7 +12,6 @@ When(
   "up or down keyboard button is pressed to select any suggestion",
   () => {
     cy.get(`[data-cy="search bar"]`)
-      .type("chi")
       .type(`{downArrow}`)
       .type(`{downArrow}`)
       .type(`{downArrow}`)
