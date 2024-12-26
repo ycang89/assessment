@@ -23,7 +23,7 @@ export default function Index({
     return suggestions?.suggestions.slice(0, 6);
   }, [suggestions]);
 
-  const onKeydownSearchInput = (e: React.KeyboardEvent) => {
+  const onKeydownSearchInput = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "ArrowDown") {
       e.preventDefault();
       if (
@@ -44,7 +44,7 @@ export default function Index({
       }
     }
     if (e.key === "Enter") {
-      onSubmitSearch(keyword);
+      onSubmitSearch(e.currentTarget.value);
     }
     if (e.key === "Enter" && selectedIndex !== null) {
       const selectedSuggestion = limitedSuggestions?.[selectedIndex];
@@ -66,7 +66,7 @@ export default function Index({
   const throttledSetKeyword = useCallback(
     _debounce((value: string) => {
       setKeyword(value);
-    }, 500),
+    }, 300),
     []
   );
 

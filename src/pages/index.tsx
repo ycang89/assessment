@@ -1,5 +1,5 @@
 import OfficialGovLabel from "@/components/OfficialGovLabel";
-import ResultItem from "@/components/ResultItem";
+import SearchResultRow from "@/components/SearchResultRow";
 import SearchInput from "@/components/SearchInput";
 import { useSearch } from "@/hooks/search";
 import { useState } from "react";
@@ -36,7 +36,7 @@ export default function Home() {
               </p>
               {results?.ResultItems?.map((result) => (
                 <div className="mb-10" key={result?.DocumentId}>
-                  <ResultItem
+                  <SearchResultRow
                     title={result?.DocumentTitle?.Text}
                     description={result?.DocumentExcerpt?.Text}
                     descriptionHighlight={result?.DocumentExcerpt?.Highlights}
