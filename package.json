@@ -7,9 +7,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "test": "cypress run && cypress run --component",
     "cy:open": "cypress open",
     "cy:run:e2e": "cypress run",
-    "cy:run:ct": "cypress open --component"
+    "cy:run:ct": "cypress run --component"
   },
   "dependencies": {
     "@badeball/cypress-cucumber-preprocessor": "^16.0.3",
